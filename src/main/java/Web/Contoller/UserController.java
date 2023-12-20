@@ -14,6 +14,7 @@ import java.security.Principal;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @GetMapping("user")
     public String showUser(Model model, Principal principal){
         model.addAttribute("user",userService.findByName(principal.getName()));

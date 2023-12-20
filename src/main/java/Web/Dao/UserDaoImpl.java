@@ -45,8 +45,8 @@ public class UserDaoImpl implements UserDao{
     public User showUser(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         User user = entityManager.find(User.class,id);
-        System.out.println(user.toString());
         return user;
+
     }
 
     @Override
@@ -60,6 +60,7 @@ public class UserDaoImpl implements UserDao{
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+
     @Override
     public User findByName(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -67,7 +68,7 @@ public class UserDaoImpl implements UserDao{
                 "SELECT u FROM User u WHERE u.name = :name", User.class);
         query.setParameter("name", name);
         User user = (User) query.getSingleResult();
-        System.out.println(user.toString());
         return user;
+
     }
 }

@@ -13,6 +13,7 @@ import javax.persistence.Query;
 public class RoleDaoImp implements RoleDao {
     @Autowired
     private EntityManagerFactory entityManagerFactory;
+
     @Override
     public Role showRole(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -20,7 +21,6 @@ public class RoleDaoImp implements RoleDao {
                 "SELECT r FROM Role r WHERE r.name = :name", Role.class);
         query.setParameter("name", name);
         Role role = (Role) query.getSingleResult();
-        System.out.println(role.toString());
         return role;
     }
 }
